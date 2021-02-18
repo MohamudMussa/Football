@@ -5,7 +5,7 @@ const {Teams} = require(`../config/db`);
 
 // Create method
 router.post("/create", (req, res, next) => {
-    const item = new LOL(req.body);
+    const item = new Teams(req.body);
     item.save()
         .then((result) => {
             res.status(201).send(`${result.teamName} has been added successfully!`)
@@ -14,8 +14,6 @@ router.post("/create", (req, res, next) => {
 });
 
 // Get method
-
-
 router.get("/read", (req, res, next) => {
     Teams.find((err, Teams) => {
         if (err) {
