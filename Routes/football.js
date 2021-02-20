@@ -6,8 +6,8 @@ const {Teams} = require(`../config/db`);
 
 // Create method  WORKS!!
 router.post("/create", (req, res, next) => {
-    const item = new Teams(req.body);
-    item.save()
+    const team = new Teams(req.body);
+    team.save()
         .then((result) => {
             res.status(201).send(`${result.teamName} has been added successfully!`)
         })
