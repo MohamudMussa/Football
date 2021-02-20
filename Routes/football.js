@@ -3,16 +3,6 @@
 const router = require('express').Router();
 const {Teams} = require(`../config/db`);
 
-//  WORKS!!
-router.post("/create", (req, res, next) => {
-    const item = new Teams(req.body);
-    item.save()
-        .then((result) => {
-            res.status(201).send(`${result.teamName} has been added successfully!`)
-        })
-        .catch((err) => next(err));
-});
-
 
 // Create method  WORKS!!
 router.post("/create", (req, res, next) => {
