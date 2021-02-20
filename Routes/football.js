@@ -3,7 +3,8 @@
 const router = require('express').Router();
 const {Teams} = require(`../config/db`);
 
-// Create method
+
+// Create method  WORKS!!
 router.post("/create", (req, res, next) => {
     const item = new Teams(req.body);
     item.save()
@@ -13,7 +14,7 @@ router.post("/create", (req, res, next) => {
         .catch((err) => next(err));
 });
 
-// Get method
+// Get method  WORKS!!
 router.get("/read", (req, res, next) => {
     Teams.find((err, Teams) => {
         if (err) {
@@ -23,7 +24,7 @@ router.get("/read", (req, res, next) => {
     });
 });
 
-// Get one methods
+// Get one methods  WORKS!!
 router.get("/get/:id", (req,res,next) => {
     Teams.findById(req.params.id, (err,result) => {
         if(err){
@@ -33,8 +34,8 @@ router.get("/get/:id", (req,res,next) => {
     })
 })
 
-// Update selected
-router.patch("/updateOne/:id", (req, res, next) => {
+// Update selected WORKS!!
+router.patch("/updateSingle/:id", (req, res, next) => {
     Teams.findByIdAndUpdate(req.params.id, 
     req.body, 
     {new: true}, 
@@ -48,7 +49,7 @@ router.patch("/updateOne/:id", (req, res, next) => {
 
 
 //UPDATE ALL
-router.put("/update/:id", (req,res,next) => {
+router.put("/updateAll/:id", (req,res,next) => {
     const {teamName, locations} = req.query;
     Teams.findByIdAndUpdate(req.params.id, {teamName,locations}, {new: true}, (err)=>{
         if(err){
